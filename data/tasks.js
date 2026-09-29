@@ -1,0 +1,116 @@
+/* Feladatbank. part: I (rövidebb) / II (összetettebb). answer: ellenőrizhető végeredmény (opcionális). */
+const R2 = String.raw;
+window.TASKS = [
+/* 1. Halmazok, kombinatorika, gráfok */
+{ id: 't1-1', topic: 't1', part: 'I', points: 3, title: 'Sportoló osztály', q: R2`<p>Egy 30 fős osztályban 18-an focizni, 15-en kosárlabdázni járnak, 5-en egyikre sem. Hányan járnak mindkét sportra?</p>`,
+  hint: R2`Először számold ki, hányan járnak legalább az egyik sportra.`, sol: R2`<p>Legalább az egyikre $30-5=25$ fő jár. A szitaformula szerint $25=18+15-x$, tehát $x=8$.</p>`, answer: '8' },
+{ id: 't1-2', topic: 't1', part: 'I', points: 4, title: 'Egymás mellett', q: R2`<p>Hányféleképpen állhat sorba 6 ember úgy, hogy Anna és Béla egymás mellett álljon?</p>`,
+  hint: R2`Ragaszd össze őket egyetlen „elemmé”.`, sol: R2`<p>Az összeragasztott pár + 4 másik = 5 elem: $5!=120$ sorrend, a páron belül 2 sorrend: $2\cdot120=240$.</p>`, answer: '240' },
+{ id: 't1-3', topic: 't1', part: 'I', points: 3, title: 'Teljes gráf', q: R2`<p>Hány éle van a 9 csúcsú teljes gráfnak?</p>`,
+  hint: R2`Minden csúcspár között pontosan egy él van.`, sol: R2`<p>$\binom92=\dfrac{9\cdot8}2=36$.</p>`, answer: '36' },
+{ id: 't1-4', topic: 't1', part: 'I', points: 3, title: 'Bizottság', q: R2`<p>Egy 7 fős csoportból hányféleképpen választható ki egy 3 fős bizottság?</p>`,
+  hint: R2`Sorrend nem számít.`, sol: R2`<p>$\binom73=35$.</p>`, answer: '35' },
+{ id: 't1-5', topic: 't1', part: 'II', points: 12, title: 'Lottó', q: R2`<p>Egy lottón 90 számból 5-öt húznak ki. a) Hányféle húzás lehetséges? b) Ha valaki 5 számot megjátszik, mekkora a valószínűsége, hogy pontosan 3 találata van? (4 tizedesjegyre kerekítve)</p>`,
+  hint: R2`Kedvező eset: 3 találat az 5 megjátszottból és 2 a maradék 85 számból.`, sol: R2`<p>a) $\binom{90}5=\dfrac{90\cdot89\cdot88\cdot87\cdot86}{120}=43\,949\,268$.</p><p>b) Kedvező: $\binom53\cdot\binom{85}2=10\cdot3570=35\,700$. $P=\dfrac{35700}{43949268}\approx0{,}0008$.</p>`, answer: '0.0008', show: '43 949 268; ≈ 0,0008' },
+
+/* 2. Számelmélet */
+{ id: 't2-1', topic: 't2', part: 'I', points: 3, title: 'Legnagyobb közös osztó', q: R2`<p>Határozza meg a 84 és 126 legnagyobb közös osztóját.</p>`,
+  hint: R2`Prímtényezős felbontás.`, sol: R2`<p>$84=2^2\cdot3\cdot7$, $126=2\cdot3^2\cdot7$, lnko $=2\cdot3\cdot7=42$.</p>`, answer: '42' },
+{ id: 't2-2', topic: 't2', part: 'I', points: 3, title: 'Osztók száma', q: R2`<p>Hány pozitív osztója van a 360-nak?</p>`,
+  hint: R2`$360=2^3\cdot3^2\cdot5$.`, sol: R2`<p>$(3+1)(2+1)(1+1)=24$.</p>`, answer: '24' },
+{ id: 't2-3', topic: 't2', part: 'I', points: 4, title: 'Utolsó számjegy', q: R2`<p>Mi a $7^{2025}$ utolsó számjegye?</p>`,
+  hint: R2`Nézd meg a 7 hatványainak utolsó számjegyét: van periódus?`, sol: R2`<p>7, 9, 3, 1 ismétlődik. $2025=4\cdot506+1$, az utolsó számjegy 7.</p>`, answer: '7' },
+{ id: 't2-4', topic: 't2', part: 'II', points: 12, title: 'Három szomszéd', q: R2`<p>Bizonyítsa be, hogy három egymást követő egész szám szorzata osztható 6-tal, majd azt, hogy négy egymást követő egész szám szorzata osztható 24-gyel.</p>`,
+  hint: R2`Három szomszéd közül egy 3-mal osztható, és van páros. Négy szomszéd között két páros van, ezek egyike 4-gyel osztható.`,
+  sol: R2`<p>Három szomszéd közül pontosan egy osztható 3-mal, legalább egy páros; 2 és 3 relatív prím, így a szorzat osztható 6-tal.</p><p>Négy szomszédnál két páros szám van, az egyik 4-gyel is osztható, így a szorzat osztható $2\cdot4=8$-cal. Négy szomszéd között van 3-mal osztható is, tehát a szorzat osztható $8\cdot3=24$-gyel. ∎</p>` },
+{ id: 't2-5', topic: 't2', part: 'I', points: 3, title: 'Kettes számrendszer', q: R2`<p>Váltsa át tízes számrendszerbe: $1101_2$.</p>`,
+  hint: R2`Helyiértékek: 8, 4, 2, 1.`, sol: R2`<p>$8+4+0+1=13$.</p>`, answer: '13' },
+
+/* 3. Algebra */
+{ id: 't3-1', topic: 't3', part: 'I', points: 3, title: 'Másodfokú egyenlet', q: R2`<p>Oldja meg: $x^2-5x+6=0$. (Adja meg a két gyököt pontosvesszővel elválasztva, növekvő sorrendben.)</p>`,
+  hint: R2`Megoldóképlet vagy szorzattá alakítás: $(x-2)(x-3)$.`, sol: R2`<p>$D=25-24=1$, $x=\dfrac{5\pm1}2$, tehát 2 és 3.</p>`, answer: ['2;3', '2,3'], show: '2; 3' },
+{ id: 't3-2', topic: 't3', part: 'I', points: 4, title: 'Gyökös egyenlet', q: R2`<p>Oldja meg a valós számok halmazán: $\sqrt{x+6}=x$.</p>`,
+  hint: R2`Emelj négyzetre, de utána ellenőrizd a gyököket!`, sol: R2`<p>$x\ge0$. $x+6=x^2\Rightarrow x^2-x-6=0\Rightarrow x=3$ vagy $x=-2$. Az $x=-2$ hamis gyök, ezért $x=3$.</p>`, answer: '3' },
+{ id: 't3-3', topic: 't3', part: 'I', points: 4, title: 'Abszolútértékes egyenlet', q: R2`<p>Oldja meg: $|2x-3|=7$. (Pontosvesszővel elválasztva, növekvő sorrendben.)</p>`,
+  hint: R2`Két eset: $2x-3=7$ és $2x-3=-7$.`, sol: R2`<p>$x=5$ vagy $x=-2$.</p>`, answer: ['-2;5', '-2,5'], show: '−2; 5' },
+{ id: 't3-4', topic: 't3', part: 'I', points: 4, title: 'Logaritmusos egyenlet', q: R2`<p>Oldja meg: $\log_2x+\log_2(x-2)=3$.</p>`,
+  hint: R2`Értelmezés: $x>2$. Vond össze a logaritmusokat.`, sol: R2`<p>$\log_2 x(x-2)=3\Rightarrow x^2-2x=8\Rightarrow x=4$ vagy $x=-2$; utóbbi nem tartozik az értelmezési tartományhoz. $x=4$.</p>`, answer: '4' },
+{ id: 't3-5', topic: 't3', part: 'II', points: 14, title: 'Egyenlőtlenségek', q: R2`<p>Oldja meg az $x^2-4x-5<0$ és az $|x-1|<3$ egyenlőtlenségeket, majd adja meg, hány egész szám elégíti ki mindkettőt.</p>`,
+  hint: R2`Az első: szorzattá alakítás. A második: távolság 1-től kisebb 3-nál.`, sol: R2`<p>$x^2-4x-5=(x-5)(x+1)<0\Rightarrow-1<x<5$.</p><p>$|x-1|<3\Rightarrow-2<x<4$.</p><p>Közös rész: $-1<x<4$. Egész számok: 0, 1, 2, 3, azaz 4 db.</p>`, answer: '4' },
+{ id: 't3-6', topic: 't3', part: 'II', points: 14, title: 'Exponenciális egyenlet', q: R2`<p>Oldja meg: $4^x-6\cdot2^x+8=0$. (Pontosvesszővel elválasztva, növekvő sorrendben.)</p>`,
+  hint: R2`Legyen $t=2^x$.`, sol: R2`<p>$t^2-6t+8=0\Rightarrow t=2$ vagy $t=4$. $2^x=2\Rightarrow x=1$; $2^x=4\Rightarrow x=2$.</p>`, answer: ['1;2', '1,2'], show: '1; 2' },
+
+/* 4. Függvények, sorozatok */
+{ id: 't4-1', topic: 't4', part: 'I', points: 3, title: 'Számtani sorozat', q: R2`<p>Egy számtani sorozat első tagja 5, különbsége 3. Mennyi a 20. tag?</p>`,
+  hint: R2`$a_n=a_1+(n-1)d$.`, sol: R2`<p>$a_{20}=5+19\cdot3=62$.</p>`, answer: '62' },
+{ id: 't4-2', topic: 't4', part: 'I', points: 3, title: 'Mértani sorozat összege', q: R2`<p>Egy mértani sorozat első tagja 2, hányadosa 3. Mennyi az első 6 tag összege?</p>`,
+  hint: R2`$S_n=a_1\dfrac{q^n-1}{q-1}$.`, sol: R2`<p>$S_6=2\cdot\dfrac{729-1}{2}=728$.</p>`, answer: '728' },
+{ id: 't4-3', topic: 't4', part: 'II', points: 14, title: 'Kamatos kamat', q: R2`<p>500 000 Ft-ot évi 6%-os kamatra teszünk a bankba, a kamatot évente tőkésítik. a) Mennyi lesz a számlán 5 év múlva (Ft-ra kerekítve)? b) Legkevesebb hány év alatt duplázódik meg az összeg?</p>`,
+  hint: R2`$K\cdot1{,}06^n$. A b) részhez logaritmus kell.`, sol: R2`<p>a) $500000\cdot1{,}06^5=500000\cdot1{,}3382256\approx669\,113$ Ft.</p><p>b) $1{,}06^n\ge2\Rightarrow n\ge\dfrac{\lg2}{\lg1{,}06}\approx11{,}9$, tehát 12 év.</p>`, answer: '669113', show: '669 113 Ft; 12 év' },
+{ id: 't4-4', topic: 't4', part: 'I', points: 3, title: 'Transzformáció', q: R2`<p>Az $x^2$ függvény grafikonjából hogyan kapjuk a $g(x)=(x-2)^2+3$ függvény grafikonját?</p>`,
+  hint: R2`Külső és belső változtatás.`, sol: R2`<p>Jobbra toljuk 2 egységgel, majd felfelé 3 egységgel; a csúcs $(2;3)$.</p>` },
+{ id: 't4-5', topic: 't4', part: 'I', points: 3, title: 'Értékkészlet', q: R2`<p>Adja meg az $f(x)=-x^2+4x+1$ függvény legnagyobb értékét.</p>`,
+  hint: R2`Teljes négyzetté alakítás.`, sol: R2`<p>$f(x)=-(x-2)^2+5$, maximum 5 ($x=2$-nél), értékkészlet $(-\infty;5]$.</p>`, answer: '5' },
+
+/* 5. Trigonometria */
+{ id: 't5-1', topic: 't5', part: 'I', points: 3, title: 'Nevezetes szögek', q: R2`<p>Mennyi $\sin30^\circ+\cos60^\circ$?</p>`,
+  hint: R2`Mindkettő $\frac12$.`, sol: R2`<p>$\frac12+\frac12=1$.</p>`, answer: '1' },
+{ id: 't5-2', topic: 't5', part: 'I', points: 4, title: 'Koszinusztétel', q: R2`<p>Egy háromszög két oldala 7 és 8, a közbezárt szög $60^\circ$. Mekkora a harmadik oldal? (két tizedesjegyre)</p>`,
+  hint: R2`$c^2=a^2+b^2-2ab\cos\gamma$.`, sol: R2`<p>$c^2=49+64-56=57$, $c=\sqrt{57}\approx7{,}55$.</p>`, answer: ['7.55'], show: '≈ 7,55' },
+{ id: 't5-3', topic: 't5', part: 'II', points: 14, title: 'Trigonometrikus egyenlet', q: R2`<p>Oldja meg a $[0;2\pi)$ intervallumon: $2\sin^2x+\sin x-1=0$.</p>`,
+  hint: R2`Legyen $t=\sin x$.`, sol: R2`<p>$2t^2+t-1=0\Rightarrow t=\frac12$ vagy $t=-1$. $x=\frac\pi6,\ \frac{5\pi}6,\ \frac{3\pi}2$.</p>` },
+{ id: 't5-4', topic: 't5', part: 'I', points: 3, title: 'Háromszög területe', q: R2`<p>Egy háromszög két oldala 10 és 12, a közbezárt szög $30^\circ$. Mekkora a területe?</p>`,
+  hint: R2`$T=\frac12ab\sin\gamma$.`, sol: R2`<p>$T=\frac12\cdot10\cdot12\cdot\frac12=30$.</p>`, answer: '30' },
+{ id: 't5-5', topic: 't5', part: 'I', points: 3, title: 'Radián', q: R2`<p>Hány fok $\dfrac{5\pi}6$ radián?</p>`,
+  hint: R2`$\pi$ rad $=180^\circ$.`, sol: R2`<p>$\frac56\cdot180^\circ=150^\circ$.</p>`, answer: '150' },
+
+/* 6. Síkgeometria és koordinátageometria */
+{ id: 't6-1', topic: 't6', part: 'I', points: 3, title: 'Távolság', q: R2`<p>Mekkora az $A(1;2)$ és $B(7;10)$ pontok távolsága?</p>`,
+  hint: R2`Pitagorasz-tétel.`, sol: R2`<p>$\sqrt{6^2+8^2}=10$. A felezőpont: $(4;6)$.</p>`, answer: '10' },
+{ id: 't6-2', topic: 't6', part: 'I', points: 4, title: 'Kör egyenlete', q: R2`<p>Egy kör középpontja $(2;-3)$, sugara 5. Rajta van-e a $P(5;1)$ pont? (igen/nem)</p>`,
+  hint: R2`Helyettesítsd be a kör egyenletébe.`, sol: R2`<p>$(x-2)^2+(y+3)^2=25$. $P$-vel: $9+16=25$, tehát igen.</p>`, answer: 'igen' },
+{ id: 't6-3', topic: 't6', part: 'II', points: 14, title: 'Érintő', q: R2`<p>Írja fel az $x^2+y^2=25$ kör $(3;4)$ pontjához tartozó érintő egyenletét. Mekkora területet zár közre ez az érintő a koordináta-tengelyekkel?</p>`,
+  hint: R2`Az érintő merőleges az $OP$ sugárra, tehát $(3;4)$ normálvektorú.`, sol: R2`<p>$3x+4y=25$. A tengelymetszetek: $x=\frac{25}3$, $y=\frac{25}4$. Terület: $\frac12\cdot\frac{25}3\cdot\frac{25}4=\frac{625}{24}\approx26{,}04$.</p>`, answer: '625/24', show: '3x+4y=25; T = 625/24 ≈ 26,04' },
+{ id: 't6-4', topic: 't6', part: 'I', points: 3, title: 'Egyenes egyenlete', q: R2`<p>Írja fel az $A(1;2)$ és $B(3;8)$ pontokon átmenő egyenes meredekségét.</p>`,
+  hint: R2`$m=\dfrac{\Delta y}{\Delta x}$.`, sol: R2`<p>$m=\dfrac{6}{2}=3$, egyenes: $y=3x-1$.</p>`, answer: '3' },
+{ id: 't6-5', topic: 't6', part: 'II', points: 14, title: 'Derékszögű háromszög körei', q: R2`<p>Az $A(0;0)$, $B(6;0)$, $C(0;8)$ háromszögben számítsa ki a beírt és a körülírt kör sugarát. (Adja meg a beírt kör sugarát.)</p>`,
+  hint: R2`$r=\dfrac Ts$; a körülírt kör sugara az átfogó fele.`, sol: R2`<p>$AB=6$, $AC=8$, $BC=10$. $T=24$, $s=12$, beírt kör: $r=\dfrac{24}{12}=2$. Körülírt kör: $R=\dfrac{10}2=5$ (Thalész).</p>`, answer: '2', show: 'r = 2, R = 5' },
+
+/* 7. Térgeometria */
+{ id: 't7-1', topic: 't7', part: 'I', points: 3, title: 'Kocka', q: R2`<p>Egy kocka éle 4 cm. Mekkora a térfogata (cm³)?</p>`,
+  hint: R2`$V=a^3$.`, sol: R2`<p>$V=4^3=64$ cm³; felszín: $6\cdot16=96$ cm².</p>`, answer: '64' },
+{ id: 't7-2', topic: 't7', part: 'I', points: 4, title: 'Henger felszíne', q: R2`<p>Egy henger alapkörének sugara 3, magassága 5. Mekkora a felszíne? (A választ $\pi$ többszöröseként adja meg, pl. 12π.)</p>`,
+  hint: R2`$A=2\pi r(r+m)$.`, sol: R2`<p>$A=2\pi\cdot3\cdot(3+5)=48\pi$. Térfogat: $45\pi$.</p>`, answer: ['48π', '48pi'], show: '48π' },
+{ id: 't7-3', topic: 't7', part: 'II', points: 14, title: 'Kúp', q: R2`<p>Egy forgáskúp alapkörének sugara 6 cm, alkotója 10 cm. Számítsa ki a térfogatát és a felszínét.</p>`,
+  hint: R2`Előbb a magasságot számold ki Pitagorasz-tétellel.`, sol: R2`<p>$m=\sqrt{100-36}=8$. $V=\frac13\pi\cdot36\cdot8=96\pi\approx301{,}6$ cm³. Felszín: $\pi r(r+a)=\pi\cdot6\cdot16=96\pi\approx301{,}6$ cm².</p>`, answer: ['96π', '96pi'], show: 'V = 96π, A = 96π' },
+{ id: 't7-4', topic: 't7', part: 'I', points: 3, title: 'Gömb', q: R2`<p>Mekkora a 3 cm sugarú gömb térfogata? (π többszöröseként)</p>`,
+  hint: R2`$V=\frac43\pi r^3$.`, sol: R2`<p>$\frac43\pi\cdot27=36\pi$.</p>`, answer: ['36π', '36pi'], show: '36π' },
+{ id: 't7-5', topic: 't7', part: 'II', points: 14, title: 'Négyzet alapú gúla', q: R2`<p>Egy szabályos négyzet alapú gúla alapéle 6 cm, oldaléle 5 cm. Számítsa ki a gúla magasságát, térfogatát és oldalfelületének területét.</p>`,
+  hint: R2`Az alap átlójának fele $3\sqrt2$. Az oldallap magassága: $\sqrt{5^2-3^2}$.`, sol: R2`<p>$m^2=25-18=7$, $m=\sqrt7\approx2{,}65$. $V=\frac13\cdot36\cdot\sqrt7=12\sqrt7\approx31{,}75$ cm³. Az oldallap magassága $\sqrt{25-9}=4$; oldalfelület: $4\cdot\frac{6\cdot4}2=48$ cm².</p>`, answer: '48', show: 'm = √7, V = 12√7 ≈ 31,75 cm³, oldalfelület = 48 cm²' },
+
+/* 8. Analízis */
+{ id: 't8-1', topic: 't8', part: 'I', points: 3, title: 'Határérték', q: R2`<p>Mennyi $\displaystyle\lim_{x\to3}\dfrac{x^2-9}{x-3}$?</p>`,
+  hint: R2`Alakítsd szorzattá a számlálót.`, sol: R2`<p>$\dfrac{(x-3)(x+3)}{x-3}=x+3\to6$.</p>`, answer: '6' },
+{ id: 't8-2', topic: 't8', part: 'I', points: 3, title: 'Derivált', q: R2`<p>Legyen $f(x)=x^3-3x^2$. Mennyi $f'(2)$?</p>`,
+  hint: R2`$f'(x)=3x^2-6x$.`, sol: R2`<p>$f'(2)=12-12=0$.</p>`, answer: '0' },
+{ id: 't8-3', topic: 't8', part: 'II', points: 16, title: 'Függvényvizsgálat', q: R2`<p>Vizsgálja meg az $f(x)=x^3-6x^2+9x+1$ függvényt monotonitás és szélsőérték szempontjából.</p>`,
+  hint: R2`$f'(x)=3(x-1)(x-3)$.`, sol: R2`<p>$f'(x)=3x^2-12x+9=3(x-1)(x-3)$.</p><p>$x<1$: $f'>0$ (nő); $1<x<3$: $f'<0$ (csökken); $x>3$: $f'>0$ (nő).</p><p>Helyi maximum: $x=1$, $f(1)=5$. Helyi minimum: $x=3$, $f(3)=1$.</p>` },
+{ id: 't8-4', topic: 't8', part: 'I', points: 3, title: 'Határozott integrál', q: R2`<p>Mennyi $\displaystyle\int_0^2 3x^2\,dx$?</p>`,
+  hint: R2`Primitív függvény: $x^3$.`, sol: R2`<p>$[x^3]_0^2=8$.</p>`, answer: '8' },
+{ id: 't8-5', topic: 't8', part: 'II', points: 16, title: 'Terület és forgástest', q: R2`<p>a) Számítsa ki az $y=x$ és $y=x^2$ görbék által közbezárt terület nagyságát. b) Mekkora az $y=\sqrt x$ görbe $0\le x\le4$ szakaszának x-tengely körüli forgatásakor keletkező test térfogata?</p>`,
+  hint: R2`a) Metszéspontok: 0 és 1. b) $V=\pi\int f^2$.`, sol: R2`<p>a) $\int_0^1(x-x^2)\,dx=\frac12-\frac13=\frac16$.</p><p>b) $V=\pi\int_0^4x\,dx=\pi\cdot\frac{16}2=8\pi$.</p>`, answer: '1/6', show: 'a) 1/6; b) 8π' },
+{ id: 't8-6', topic: 't8', part: 'II', points: 16, title: 'Optimalizálás', q: R2`<p>100 m kerítéssel egy fal mellett téglalap alakú telket kerítünk (a fal mentén nincs kerítés). Mekkora lehet a telek legnagyobb területe (m²)?</p>`,
+  hint: R2`Ha a falra merőleges oldal $x$, a párhuzamos $100-2x$.`, sol: R2`<p>$T(x)=x(100-2x)$. $T'(x)=100-4x=0\Rightarrow x=25$. $T''=-4<0$ maximum. $T(25)=25\cdot50=1250$ m².</p>`, answer: '1250' },
+
+/* 9. Valószínűség, statisztika */
+{ id: 't9-1', topic: 't9', part: 'I', points: 3, title: 'Két kocka', q: R2`<p>Két kockával dobva mi a valószínűsége, hogy a dobott számok összege 7? (törtként, pl. 1/6)</p>`,
+  hint: R2`6 kedvező eset van a 36-ból.`, sol: R2`<p>$\dfrac6{36}=\dfrac16$.</p>`, answer: '1/6' },
+{ id: 't9-2', topic: 't9', part: 'I', points: 4, title: 'Érmedobás', q: R2`<p>Egy szabályos érmét 10-szer feldobunk. Mennyi a valószínűsége, hogy pontosan 3 fejet dobunk? (törtként, 1024-es nevezővel egyszerűsítve: pl. 5/32)</p>`,
+  hint: R2`Binomiális eloszlás.`, sol: R2`<p>$\dfrac{\binom{10}3}{2^{10}}=\dfrac{120}{1024}=\dfrac{15}{128}\approx0{,}117$.</p>`, answer: '15/128' },
+{ id: 't9-3', topic: 't9', part: 'II', points: 14, title: 'Selejtes termékek', q: R2`<p>Egy gyártósoron a termékek 5%-a selejtes. Véletlenszerűen kiválasztunk 8 terméket. Mennyi a valószínűsége, hogy legalább egy selejtes van köztük? (három tizedesjegyre)</p>`,
+  hint: R2`Komplementer esemény: egy sem selejtes.`, sol: R2`<p>$1-0{,}95^8\approx1-0{,}6634=0{,}3366\approx0{,}337$.</p>`, answer: ['0.337'], show: '≈ 0,337' },
+{ id: 't9-4', topic: 't9', part: 'I', points: 3, title: 'Középértékek', q: R2`<p>Adatok: 2, 3, 3, 5, 7. Mennyi az átlag?</p>`,
+  hint: R2`Összeg osztva az elemszámmal.`, sol: R2`<p>Átlag 4, medián 3, módusz 3, szórás $\sqrt{3{,}2}\approx1{,}79$.</p>`, answer: '4' },
+{ id: 't9-5', topic: 't9', part: 'II', points: 14, title: 'Golyók', q: R2`<p>Egy urnában 5 piros és 3 kék golyó van. Visszatevés nélkül kihúzunk kettőt. a) Mennyi a valószínűsége, hogy mindkettő piros? b) Ha az első golyó kék, mennyi a valószínűsége, hogy a második piros? (Az a) részt adja meg.)</p>`,
+  hint: R2`Szorozd az egymás utáni valószínűségeket.`, sol: R2`<p>a) $\dfrac58\cdot\dfrac47=\dfrac{20}{56}=\dfrac5{14}$.</p><p>b) $\dfrac57$.</p>`, answer: '5/14', show: 'a) 5/14; b) 5/7' }
+];
